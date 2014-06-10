@@ -13,7 +13,7 @@ angular.module('angularMusicApp')
     findUser: (username) ->
       deferred = $q.defer()
 
-      $http.post(Globals.rdioEndpoint + '?method=findUser&vanityName=' + username,
+      $http.get(Globals.rdioEndpoint + '?method=findUser&vanityName=' + username,
         cache: true
       ).success (data) ->
         deferred.resolve data

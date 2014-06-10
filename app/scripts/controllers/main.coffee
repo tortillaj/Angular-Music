@@ -8,10 +8,10 @@
  # Controller of the angularMusicApp
 ###
 angular.module('angularMusicApp')
-  .controller 'MainCtrl', ['$scope', 'Rdio', ($scope, Rdio) ->
+  .controller 'MainCtrl', ['$scope', 'LastFm', ($scope, LastFm) ->
 
-    Rdio.findUser('cejams').then (user) ->
-      console.dir user
+    LastFm.findUser('jamesia').then (data) ->
+      console.dir data.user
 
     return
 
