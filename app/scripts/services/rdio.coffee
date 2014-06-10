@@ -8,14 +8,16 @@
  # Factory in the angularMusicApp.
 ###
 angular.module('angularMusicApp')
-  .factory 'Rdio', ->
-    # Service logic
-    # ...
+  .factory 'Rdio', ['$http', '$q', 'Globals', ($http, $q, Globals) ->
 
-    meaningOfLife = 42
+    findUser: (username) ->
+      deferred = $q.defer()
 
-    # Public API here
-    {
-      someMethod: ->
-        meaningOfLife
-    }
+      $http.post(Globals.rdioEndpoint + '?method=findUser&vanityName=' + username,
+        cache: true
+      ).success (data) ->
+        deferred.resolve data
+
+      deferred.promise
+
+  ]

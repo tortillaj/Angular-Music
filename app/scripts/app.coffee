@@ -11,9 +11,12 @@
 angular
   .module('angularMusicApp', [
     'ngResource',
-    'ngRoute',
-    'angularMusicApp.config'
+    'ngRoute'
   ])
+
+  .constant 'Globals',
+    rdioEndpoint: "<%- rdioEndpoint %>"
+
   .config ($routeProvider) ->
     $routeProvider
       .when '/',

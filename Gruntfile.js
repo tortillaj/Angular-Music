@@ -334,8 +334,8 @@ module.exports = function (grunt) {
           data: config
         },
         files: {
-          '.tmp/scripts/config.js':
-            ['<%= yeoman.app %>/scripts/config.js.tpl']
+          '.tmp/scripts/app.js':
+            ['.tmp/scripts/app.js']
         }
       }
     },
@@ -418,9 +418,9 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'template',
       'wiredep',
       'concurrent:server',
+      'template',
       'autoprefixer',
       'connect:livereload',
       'watch'
@@ -442,10 +442,10 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'template',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
+    'template',
     'autoprefixer',
     'concat',
     'ngmin',

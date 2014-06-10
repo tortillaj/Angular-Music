@@ -8,9 +8,11 @@
  # Controller of the angularMusicApp
 ###
 angular.module('angularMusicApp')
-  .controller 'MainCtrl', ($scope) ->
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate'
-      'AngularJS'
-      'Karma'
-    ]
+  .controller 'MainCtrl', ['$scope', 'Rdio', ($scope, Rdio) ->
+
+    Rdio.findUser('cejams').then (user) ->
+      console.dir user
+
+    return
+
+  ]
