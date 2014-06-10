@@ -10,12 +10,9 @@
 ###
 angular
   .module('angularMusicApp', [
-    'ngAnimate',
-    'ngCookies',
     'ngResource',
     'ngRoute',
-    'ngSanitize',
-    'ngTouch'
+    'angularMusicApp.config'
   ])
   .config ($routeProvider) ->
     $routeProvider
@@ -27,4 +24,8 @@ angular
         controller: 'AboutCtrl'
       .otherwise
         redirectTo: '/'
-
+  .run [
+    'Globals'
+    (Globals) ->
+      console.dir Globals
+  ]

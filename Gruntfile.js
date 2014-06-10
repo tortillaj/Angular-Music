@@ -15,6 +15,10 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  // Add the config
+  var env = process.env.ENV || 'development';
+  var config = require('./config/' + env + '.json');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -324,6 +328,18 @@ module.exports = function (grunt) {
       }
     },
 
+    template: {
+      config: {
+        options: {
+          data: config
+        },
+        files: {
+          '.tmp/scripts/config.js':
+            ['<%= yeoman.app %>/scripts/config.js.tpl']
+        }
+      }
+    },
+
     // Replace Google CDN references
     cdnify: {
       dist: {
@@ -402,6 +418,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'template',
       'wiredep',
       'concurrent:server',
       'autoprefixer',
@@ -425,6 +442,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'template',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
