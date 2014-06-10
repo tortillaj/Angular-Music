@@ -1,0 +1,25 @@
+.lastfm-user {
+  @extend .segment-gray;
+
+  .lastfm-user__name {
+    @extend .segment-gray-title;
+  }
+
+  .lastfm-user__stat {
+    @extend .segment-gray;
+  }
+
+  .lastfm-user__stat-title {
+    @extend .segment-gray-title;
+    @include rem(font-size, 1.4rem);
+    text-transform: none;
+
+    &:before, &:after {
+      display: none;
+    }
+  }
+
+  .lastfm-user__stat-description {
+    text-align: center;
+  }
+}

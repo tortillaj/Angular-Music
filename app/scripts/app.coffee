@@ -13,7 +13,8 @@ angular
     'ngResource',
     'ngRoute',
     'jmdobry.angular-cache',
-    'angularMoment'
+    'angularMoment',
+    'ui.bootstrap'
   ])
 
   .constant 'Globals',

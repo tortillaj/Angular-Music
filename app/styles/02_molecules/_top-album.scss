@@ -1,0 +1,43 @@
+.top-album {
+  margin-bottom: $double-margin;
+
+  &:nth-child(3n + 5) {
+    clear: left;
+  }
+
+  a {
+    @include link-colors($amulet);
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .top-album__container {
+    border: 1px solid $amulet;
+    background-color: $cararra;
+    transition: all 0.5s ease;
+    &:hover {
+      background-color: darken($cararra, 2.5%);
+      box-shadow: 0 0 3px rgba($rolling-stone, 0.7);
+    }
+  }
+
+  .top-album__citation {
+    text-shadow: 0 1px 1px rgba(black, 0.1);
+    padding: $half-margin;
+    text-align: center;
+  }
+
+  .top-album__title {
+    @include rem(font-size, 1.6rem);
+  }
+
+  .top-album__artist {
+    @include rem(font-size, 1.4rem);
+  }
+
+  .top-album__image {
+    width: 100%;
+  }
+
+}

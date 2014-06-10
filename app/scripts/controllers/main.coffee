@@ -17,6 +17,8 @@ angular.module('angularMusicApp')
         if data.user
           $scope.lastfmUser = data.user
           console.dir data.user
+          #$scope.lastfmDisplayName =
+          _getTopAlbums(data.user.name)
         else if data.message
           $scope.messages.push
             type: 'danger'
@@ -33,7 +35,6 @@ angular.module('angularMusicApp')
       LastFm.getTopAlbums(username).then ((data) ->
         if data.topalbums.album
           $scope.lastfmTopAlbums = data.topalbums.album
-          console.dir data.topalbums.album
         else if data.message
           $scope.messages.push
             type: 'danger'
@@ -46,14 +47,15 @@ angular.module('angularMusicApp')
           $scope.messages.push reason
         )
 
-
     $scope.findLastFmUser = () ->
       _findLastFmUser($scope.lastfmUsername)
-      _getTopAlbums($scope.lastfmUsername)
+
+    $scope.closeAlert = (index) ->
+      $scope.messages.splice index, 1
 
 
-    _findLastFmUser(Globals.defaultLastfmUsername)
-    _getTopAlbums(Globals.defaultLastfmUsername)
+    #_findLastFmUser(Globals.defaultLastfmUsername)
+    #_getTopAlbums(Globals.defaultLastfmUsername)
 
     return
 

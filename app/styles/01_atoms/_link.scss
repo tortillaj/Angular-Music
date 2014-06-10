@@ -1,0 +1,4 @@
+a {
+  @include link-colors($coral, darken($coral, 10%));
+  transition: all 0.5s linear;
+}

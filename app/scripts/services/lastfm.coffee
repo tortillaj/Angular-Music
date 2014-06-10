@@ -23,7 +23,7 @@ angular.module('angularMusicApp')
     getTopAlbums: (username) ->
       deferred = $q.defer()
 
-      $http.get(Globals.lastfmEndpoint + '?method=user.gettopalbums&user=' + username + '&format=json&api_key=' + Globals.lastfmApiKey,
+      $http.get(Globals.lastfmEndpoint + '?method=user.gettopalbums&user=' + username + '&limit=27&format=json&api_key=' + Globals.lastfmApiKey,
         cache: true
       ).success (data) ->
         deferred.resolve data

@@ -1,0 +1,7 @@
+.top-albums {
+  @extend .segment-gray;
+
+  .top-albums__title {
+    @extend .segment-gray-title;
+  }
+}

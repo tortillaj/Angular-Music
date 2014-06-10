@@ -1,0 +1,23 @@
+.segment-gray {
+  border: 1px solid $cararra;
+  margin-bottom: $double-margin;
+}
+.segment-gray-title {
+  @include rem(font-size, 1.6rem);
+  text-transform: uppercase;
+  background-color: $cararra;
+  color: $amulet;
+  padding: $base-margin;
+
+  &:before, &:after {
+    content: "::";
+  }
+
+  &:before {
+    margin-right: $half-margin;
+  }
+
+  &:after {
+    margin-left: $half-margin;
+  }
+}
