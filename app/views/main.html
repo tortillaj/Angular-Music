@@ -1,11 +1,54 @@
 <div class="jumbotron">
-  <h1>Angular Music</h1>
-  <p>An AngularJS app showing how to connect with LastFM API</p>
+    <h1>Angular Music</h1>
+
+    <p>An AngularJS app showing how to connect with LastFM API</p>
 </div>
 
 <div class="row marketing">
-  <form class="form-inline">
-      <input type="text" ng-model="lastfmUser" placeholder="Your LastFM Username">
-      <input type="submit" ng-click="findLastFmUser()" class="button">
-  </form>
+
+    <div class="bs-callout bs-callout-danger" ng-if="errorMessages">
+        <alert ng-repeat="alert in messages" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+
+    <div class="col-lg-12">
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="lastfmUsername">Your LastFM Username</label>
+                <input type="text" ng-model="lastfmUsername" id="lastfmUsername" placeholder="Your LastFM Username" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="submit" ng-click="findLastFmUser()" class="btn btn-default">
+            </div>
+        </form>
+    </div>
+
+    <section class="col-lg-12" ng-if="lastfmUser">
+        <h2>{{ lastfmUser.realname }}</h2>
+        <img ng-src="{{ lastfmUser.image[3]['#text'] }}" alt>
+        <div class="row">
+            <div class="col-md-4 col-sm-1">
+                <h3>Registered</h3>
+                <p>{{ lastfmUser.registered.unixtime * 1000 | amCalendar }}</p>
+            </div>
+            <div class="col-md-4 col-sm-1">
+                <h3>Play Count</h3>
+                <p>{{ lastfmUser.playcount | thousandsToK }}</p>
+            </div>
+            <div class="col-md-4 col-sm-1">
+                <h3>Playlists</h3>
+                <p>{{ lastfmUser.playlists }}</p>
+            </div>
+        </div>
+        <div class="row" ng-if="lastfmTopAlbums">
+            <h2>Top Albums</h2>
+            <figure class="col-lg-4 col-md-2 col-sm-1" ng-repeat="album in lastfmTopAlbums">
+                <img ng-src="{{ album.image[3]['#text'] }}" alt>
+                <figcaption>
+                    <h4>{{ album.name }}</h4>
+                    <p>{{ album.artist.name }}</p>
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+
 </div>

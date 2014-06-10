@@ -12,13 +12,15 @@ angular
   .module('angularMusicApp', [
     'ngResource',
     'ngRoute',
-    'jmdobry.angular-cache'
+    'jmdobry.angular-cache',
+    'angularMoment'
   ])
 
   .constant 'Globals',
     rdioEndpoint: "<%- rdioEndpoint %>"
     lastfmEndpoint: "<%- lastfmEndpoint %>"
     lastfmApiKey: "<%- lastfmApiKey %>"
+    defaultLastfmUsername: "<%- defaultLastfmUsername %>"
 
   .config ($routeProvider) ->
     $routeProvider
@@ -32,12 +34,13 @@ angular
         redirectTo: '/'
   .run [
     'Globals',
-    '$angularCacheFactory'
-    (Globals, $angularCacheFactor) ->
+    '$angularCacheFactory',
+    '$http',
+    (Globals, $angularCacheFactory, $http) ->
 
       # setup the cache factory to use localStorage
       $angularCacheFactory 'defaultCache',
-        maxAge: 900000,
+        maxAge: 9000000000000,
         cacheFlushInterval: 6000000
         deleteOnExpire: 'aggressive'
         storageMode: 'localStorage'

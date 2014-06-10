@@ -1,0 +1,7 @@
+# Rename this to development.json
+{
+  "rdioEndpoint": "http://api.rdio.com/1/",
+  "lastfmEndpoint": "http://ws.audioscrobbler.com/2.0/",
+  "lastfmApiKey": "YOUR LAST FM API KEY",
+  "defaultLastfmUsername": "DEFAULT USERNAME"
+}
